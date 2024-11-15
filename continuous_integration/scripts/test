@@ -9,9 +9,14 @@ test_ci() {
 
     pip install *.whl
 
-    cd "${REPO_DIR}"
+    cd "${REPO_DIR}/cuda_bindings"
 
-    python -m pytest
+    set +e
+    echo "----------------Running tests----------------"
+    pytest tests/
+
+    echo "----------------Running examples----------------"
+    pytest examples/
 }
 
 test_project() {
